@@ -1,7 +1,7 @@
 # PSEXE2ROM GNUMakeFile by Alex Free
 
 CC=gcc
-VER=1.0
+VER=1.0.1
 
 psexe2rom: clean
 	$(CC) -Wall psexe2rom.c -o psexe2rom
@@ -11,6 +11,9 @@ fedora-deps:
 
 clean:
 	rm -f psexe2rom.exe psexe2rom
+
+clean-zip:
+	rm -f psexe2rom.exe psexe2rom *.zip
 
 cross-win32: clean
 	make psexe2rom CC="i686-w64-mingw32-gcc"
@@ -54,4 +57,4 @@ win-x86-release: cross-win32
 win-x86_64-release: cross-win64
 	make release-win PLATFORM=windows_x86_64
 
-all-releases: linux-x86-release linux-x86_64-release win-x86-release win-x86_64-release
+all: linux-x86-release linux-x86_64-release win-x86-release win-x86_64-release
