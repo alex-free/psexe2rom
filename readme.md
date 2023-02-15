@@ -32,10 +32,10 @@ Changes:
 *   PSEXE2ROM now has 2 modes, specified by the first argument. The `-d` argument will output a `romfile.dat` file in the current directory, **and** a `.rom` file specified by the 3rd argument given. The `-r` argument will output only the `.rom` file asspecified by the 3rd argument given.
 *   Rewrote documentation in markdown/html, and added more info about how to flash `.rom` and or use `romfile.dat` files.
 
-*   [Windows x86](https://github.com/alex-free/psexe2rom/releases/download/v1.0.2/psexe2rom_1.0.2_windows_x86.zip) _For Windows 95 OSR 2.5 and above._
-*   [Windows x86\_64](https://github.com/alex-free/psexe2rom/releases/download/v1.0.2/psexe2rom_1.0.2_windows_x86_64.zip) _For 64-bit Windows._
-*   [Linux x86](https://github.com/alex-free/psexe2rom/releases/download/v1.0.2/psexe2rom_1.0.2_linux_x86_static.zip) _For modern 32-bit Linux distros (static build)._
-*   [Linux x86\_64](https://github.com/alex-free/psexe2rom/releases/download/v1.0.2/psexe2rom_1.0.2_linux_x86_64_static.zip) _For modern 64-bit Linux distros (static build)._
+*   [psexe2rom_1.0.2\_windows\_x86](https://github.com/alex-free/psexe2rom/releases/download/v1.0.2/psexe2rom_1.0.2_windows_x86.zip) _For Windows 95 OSR 2.5 and above._
+*   [psexe2rom_1.0.2\_windows\_x86\_64](https://github.com/alex-free/psexe2rom/releases/download/v1.0.2/psexe2rom_1.0.2_windows_x86_64.zip) _For 64-bit Windows._
+*   [psexe2rom_1.0.2\_linux\_x86](https://github.com/alex-free/psexe2rom/releases/download/v1.0.2/psexe2rom_1.0.2_linux_x86_static.zip) _For modern 32-bit Linux distros (static build)._
+*   [psexe2rom_1.0.2\_linux\_x86\_64](https://github.com/alex-free/psexe2rom/releases/download/v1.0.2/psexe2rom_1.0.2_linux_x86_64_static.zip) _For modern 64-bit Linux distros (static build)._
 *   [Source](https://github.com/alex-free/psexe2rom/archive/refs/tags/v1.0.2.zip)
 
 ### Version 1.0.1 (11/24/2022)

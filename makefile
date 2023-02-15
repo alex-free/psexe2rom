@@ -30,7 +30,7 @@ linux-x86_64: clean
 release:
 	rm -rf psexe2rom_$(VER)_$(PLATFORM) psexe2rom_$(VER)_$(PLATFORM).zip
 	mkdir psexe2rom_$(VER)_$(PLATFORM)
-	cp -rv psexe2rom readme.md readme.html license.txt psexe2rom_$(VER)_$(PLATFORM)
+	cp -rv psexe2rom readme.md license.txt psexe2rom_$(VER)_$(PLATFORM)
 	chmod -R 777 psexe2rom_$(VER)_$(PLATFORM)
 	zip -r psexe2rom_$(VER)_$(PLATFORM).zip psexe2rom_$(VER)_$(PLATFORM)
 	rm -rf psexe2rom_$(VER)_$(PLATFORM)
@@ -39,7 +39,7 @@ release:
 release-win:
 	rm -rf psexe2rom_$(VER)_$(PLATFORM) psexe2rom_$(VER)_$(PLATFORM).zip
 	mkdir psexe2rom_$(VER)_$(PLATFORM)
-	cp -rv psexe2rom.exe readme.md readme.html license.txt psexe2rom_$(VER)_$(PLATFORM)
+	cp -rv psexe2rom.exe readme.md license.txt psexe2rom_$(VER)_$(PLATFORM)
 	chmod -R 777 psexe2rom_$(VER)_$(PLATFORM)
 	zip -r psexe2rom_$(VER)_$(PLATFORM).zip psexe2rom_$(VER)_$(PLATFORM)
 	rm -rf psexe2rom_$(VER)_$(PLATFORM)
