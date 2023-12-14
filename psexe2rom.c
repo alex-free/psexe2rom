@@ -4,6 +4,8 @@
 #include <stdint.h>
 #include "exe_loader.h"
 
+#define VERSION "1.0.3"
+
 char yn_response[2];
 
 unsigned char byte;
@@ -26,9 +28,9 @@ int checksum;
 int argv3_len;
 int fn_in_rom_len; 
 
-#define ROM_MAX_512 524288 // 512KB
-#define ROM_MAX_256 262144 // 256KB
-#define ROM_MAX_128 131072 // 128KB
+#define ROM_MAX_512 524288 // 512KiB
+#define ROM_MAX_256 262144 // 256KiB
+#define ROM_MAX_128 131072 // 128KiB
 #define EXE_MAX_512_CART 523264 // 512KB - 0x400 (exe loader is 1024 bytes)
 #define EXE_MAX_256_CART 261120 // 256KB - 0x400 (exe loader is 1024 bytes)
 #define EXE_MAX_128_CART 130048 // 128KB - 0x400 (exe loader is 1024 bytes)
@@ -45,7 +47,7 @@ int main (int argc, const char * argv[])
     make128 = FALSE;
 	valid_input = FALSE;
 	
-	printf("PSEXE2ROM v1.0.2 By Alex Free & MottZilla (C)2022 3-BSD\nhttps://alex-free.github.io/psexe2rom\n");
+	printf("PSEXE2ROM v%s\nBy Alex Free & MottZilla (C)2022-2023 (3-BSD)\nhttps://alex-free.github.io/psexe2rom\n", VERSION);
 	
 	if(argc != 4)
 	{
@@ -115,7 +117,7 @@ int main (int argc, const char * argv[])
 
         if(exe_size > EXE_MAX_512_CART)
         {
-            printf("Error: PS-EXE file %s is over the file size limit for 512KB cheat carts and can not be converted to a ROM\n", argv[1]);
+            printf("Error: PS-EXE file %s is over the file size limit for 512KiB cheat carts and can not be converted to a ROM\n", argv[1]);
 	        fclose(exe);
 	        fclose(rom);
             return(1);
@@ -126,18 +128,10 @@ int main (int argc, const char * argv[])
 
             if(exe_size > EXE_MAX_256_CART)
             {
-                printf("WARNING: PS-EXE file %s is over the file size limit for 256KB cheat carts and a 256KB ROM will not be made\n", argv[1]);
-            }
-            else
-            {
                 make512 = FALSE;
                 make256 = TRUE;
 
                 if(exe_size > EXE_MAX_128_CART)
-                {
-                    printf("WARNING: PS-EXE file %s is over the file size limit for 128KB cheat carts and a 128KB ROM will not be made\n", argv[1]);
-                }
-                else
                 {
                     make256 = FALSE;
                     make128 = TRUE;    
@@ -173,12 +167,10 @@ int main (int argc, const char * argv[])
 
         if(make512)
         {
-            printf("INFO: ROM file %s can be flashed to 512KB cheat carts\n", argv[3]);
-            
+            printf("%s can be flashed to 512KiB cheat carts\n", argv[3]);
+            // Pad
             if(rom_size != ROM_MAX_512)
-            {
-                printf("Padding ROM file to 512KB\n");
-                
+            {                
                 while(rom_size != ROM_MAX_512)
                 {
                     fputc(byte, rom);
@@ -189,12 +181,10 @@ int main (int argc, const char * argv[])
 
         if(make256)
         {
-            printf("INFO: ROM file %s can be flashed to 512KB and 256KB cheat carts\n", argv[3]);
+            printf("%s can be flashed to 512KiB and 256KiB cheat carts\n", argv[3]);
 
             if(rom_size != ROM_MAX_256)
-            {
-                printf("Padding ROM file to 256KB\n");
-    
+            {    
                 while(rom_size != ROM_MAX_256)
                 {
                     fputc(byte, rom);
@@ -204,12 +194,10 @@ int main (int argc, const char * argv[])
         }	    
         if(make128)
         {
-            printf("INFO: ROM file %s can be flashed to 512KB, 256KB, and 128KB cheat carts\n", argv[3]);
+            printf("%s can be flashed to 512KiB, 256KiB, and 128KiB cheat carts\n", argv[3]);
 
             if(rom_size != ROM_MAX_128)
-            {
-                printf("Padding ROM file to 128KB\n");
-            
+            {            
                 while(rom_size != ROM_MAX_128)
                 {
                     fputc(byte, rom);
@@ -219,7 +207,7 @@ int main (int argc, const char * argv[])
         }
 
     } else {
-	       printf("Error: Can not open the input PS-EXE file for conversion\n");
+	       printf("Error: Can not open the input PS-EXE file: %s for conversion\n", argv[3]);
 	       fclose(rom);
 	       return(1);
 	}
@@ -341,7 +329,6 @@ int main (int argc, const char * argv[])
 
 	fclose(rom);
 
-	printf("\nDone! The output file %s is a NXFlash compatible .ROM\n", argv[3]);
-
+	printf("Complete\n");
 	return 0;
 }
